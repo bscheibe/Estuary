@@ -1,4 +1,4 @@
-import java.util.Random;
+package game;
 
 public class Character {
 	int xloc;
@@ -24,4 +24,3 @@ public class Character {
 	public void Move() {
 	}
 }
-//noah

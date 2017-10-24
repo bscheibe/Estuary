@@ -1,8 +1,9 @@
+package game;
 
 public class Food extends NPC {
 	
 	public Food() {
-		this.value =100;
+		value = 100;
 	}
 	
 }
