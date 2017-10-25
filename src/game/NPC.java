@@ -7,11 +7,13 @@ public class NPC extends Character {
 	int[] imagetype = {1,2,3,4,5};
 	int value;
 	boolean isGarbage;
+	int speed;
 	
 	public NPC() {
 		image = imagetype[(int) (Math.random()*5)];
 		Random random = new Random();
 		isGarbage = random.nextBoolean();
+		speed = 2 + random.nextInt(2);
 		value = 100;
 		if (isGarbage)
 			value = -100;
@@ -21,7 +23,7 @@ public class NPC extends Character {
 	}
 	
 	public void moveNPC() {
-		xloc--;
+		xloc -= speed;
 	}
 	
 	public boolean getIsGarbage() {

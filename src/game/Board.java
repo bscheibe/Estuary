@@ -7,7 +7,6 @@ public class Board {
 	public int timer;
 	private ArrayList<NPC> obstacles;
 	private boolean isGameOver;
-	private int lastLane;
 	
 	public Board() {
 		player = new Player();
@@ -28,8 +27,8 @@ public class Board {
 				continue;
 			}
 			if ((5-o.getLane() == player.getLane()) &&
-				(player.getXloc()-10 < o.getXloc()) && 
-						(o.getXloc() < player.getXloc()+10))  {
+				(player.getXloc() < o.getXloc()) && 
+						(o.getXloc() < player.getXloc()+50))  {
 				player.changeScore(o.getValue());//player hits an NPC and we adjust score
 				if (o.getValue() < 0)
 					player.takeDamage(o.getValue()/20);//take damage if it was garbage
@@ -40,14 +39,22 @@ public class Board {
 	}
 
 	public void update() {
+		Random rand = new Random();
+		boolean isThereSpace = true;
 		moveNPCs();
 		if (player.health <= 0) {
 			isGameOver = true;
 		}
-		Random rand = new Random();
+		NPC newNpc = new NPC();
+		for (NPC o : obstacles) {
+			if ((o.getLane() == newNpc.getLane()) && (o.getXloc() > Main.frameWidth-350)){
+				isThereSpace = false;
+			}
+		}
 		int x = rand.nextInt(60);
-		if (x == 1)
-			obstacles.add(new NPC());
+		if (x == 1 && isThereSpace) {
+			obstacles.add(newNpc);
+		}
 	}
 	
 	public boolean getIsGameOver() {
