@@ -7,22 +7,13 @@ public class Board {
 	public int timer;
 	private ArrayList<NPC> obstacles;
 	private boolean isGameOver;
+	private int lastLane;
 	
 	public Board() {
 		player = new Player();
 		obstacles = new ArrayList<NPC>();
 		isGameOver = false;
 		}
-	
-	public void spawnNPC() {
-		Random rand = new Random();
-		int x = rand.nextInt(2);
-		if (x == 1) {
-			obstacles.add(new Garbage());
-		}else {
-			obstacles.add(new Food());
-		}
-	}
 	
 	public void removeNPC(int i) {
 		obstacles.remove(i);
@@ -54,7 +45,7 @@ public class Board {
 			isGameOver = true;
 		}
 		Random rand = new Random();
-		int x = rand.nextInt(15);
+		int x = rand.nextInt(60);
 		if (x == 1)
 			obstacles.add(new NPC());
 	}

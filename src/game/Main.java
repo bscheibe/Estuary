@@ -13,7 +13,7 @@ public class Main {
 			controller.tick();
 			controller.updateView();
 			try {
-				Thread.sleep(50);
+				Thread.sleep(7);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

@@ -17,7 +17,7 @@ public class NPC extends Character {
 			value = -100;
 		lane = (int) (Math.random()*5);
 		yloc = lane * (Main.frameHeight / 5);
-		xloc = 200;
+		xloc = 600;
 	}
 	
 	public void moveNPC() {

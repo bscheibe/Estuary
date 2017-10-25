@@ -86,15 +86,15 @@ class GamePanel extends JPanel implements KeyListener{
 		super.paintComponent(g);
 		for (game.NPC o : obstacles){
 			if (o.getIsGarbage()) {
-				g.setColor(Color.yellow);
-				g.drawRect(o.getXloc(), o.getYloc(), 10, 10);
+				g.setColor(Color.green);
+				g.drawRect(o.getXloc(), o.getYloc(), 50, 50);
 			} else {
 				g.setColor(Color.blue);
-				g.drawRect(o.getXloc(), o.getYloc(), 10, 10);
+				g.drawRect(o.getXloc(), o.getYloc(), 50, 50);
 			}
 		}
 		g.setColor(Color.red);
-		g.drawRect(player.getXloc(), player.getYloc(), 10, 10);
+		g.drawRect(player.getXloc(), player.getYloc(), 50, 50);
 		g.setColor(Color.BLACK);
 		g.drawString("" + player.getScore(), 50, 50);
 		g.drawString("" + player.getHealth(), 50, 70);
