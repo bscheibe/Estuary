@@ -51,7 +51,7 @@ public class Board {
 				isThereSpace = false;
 			}
 		}
-		int x = rand.nextInt(60);
+		int x = rand.nextInt(25);
 		if (x == 1 && isThereSpace) {
 			obstacles.add(newNpc);
 		}
