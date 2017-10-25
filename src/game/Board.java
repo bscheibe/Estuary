@@ -1,12 +1,30 @@
 package game;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Board {
+public class Board implements KeyListener{
 	public Player player;
 	public int timer;
 	private ArrayList<NPC> obstacles;
 	private boolean isGameOver;
+	
+	public final static int frameWidth = 700;
+	public final static int frameHeight = 500;
+	
+	public static void main(String[] args) {
+		Board board = new Board();
+		while (!board.getIsGameOver()) {
+			board.update();
+			try {
+				Thread.sleep(18);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		System.out.println("Game over!");
+	}
 	
 	public Board() {
 		player = new Player();
@@ -67,6 +85,24 @@ public class Board {
 
 	public Player getPlayer() {
 		return player;
+	}
+
+	@Override
+	public void keyPressed(KeyEvent key) {
+		int keyCode = key.getKeyCode();
+		if (KeyEvent.VK_UP == keyCode)
+			player.jumpUp();
+		if (KeyEvent.VK_DOWN == keyCode)
+			player.jumpDown();
+		System.out.println("Moved to: " + player.getLane());
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
 	}
 }
 
