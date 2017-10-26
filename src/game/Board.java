@@ -47,10 +47,12 @@ public class Board implements KeyListener{
 			if ((5-o.getLane() == player.getLane()) &&
 				(player.getXloc() < o.getXloc()) && 
 						(o.getXloc() < player.getXloc()+50))  {
+				System.out.println("Collision");
 				player.changeScore(o.getValue());//player hits an NPC and we adjust score
 				if (o.getValue() < 0)
 					player.takeDamage(o.getValue()/20);//take damage if it was garbage
 				removes.add(o);//remove NPC after impact
+				System.out.println(player);
 			}
 		}
 		obstacles.removeAll(removes);

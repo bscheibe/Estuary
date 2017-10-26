@@ -51,4 +51,7 @@ public class Player extends Character {
 	public void takeDamage(int dmg) {
 		health += dmg;
 	}
+	public String toString() {
+		return "This player has lane:" + this.lane + " Their score is:" + this.score;
+	}
 }

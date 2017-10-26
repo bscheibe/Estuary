@@ -37,4 +37,12 @@ public class NPC extends Character {
 	public int getXloc() {
 		return xloc;
 	}
+	
+	public String toString() {
+		if(this.value == 100) {
+			return "This food has lane:" + this.lane+ " It's xloc is:"+this.xloc;
+		}else {
+			return "This garbage has lane:" + this.lane + " It's xloc is:"+this.xloc;
+		}
+	}
 }

@@ -112,6 +112,7 @@ class GamePanel extends JPanel implements KeyListener{
 			player.jumpUp();
 		if (KeyEvent.VK_DOWN == keyCode)
 			player.jumpDown();
+		System.out.println("Player has jumped to lane:"+player.getLane());
 		repaint();
 	}
 	@Override
