@@ -38,7 +38,7 @@ public class Board implements KeyListener{
 	public void modelInConsole(int n) {
 		if(n==0) {
 			player.jumpDown();
-			System.out.println("Lane:"+player.getLane());
+			System.out.println("Player has jumped to lane:"+player.getLane());
 		}else if(n==1) {
 			player.jumpUp();
 			System.out.println("Lane:"+player.getLane());
