@@ -4,7 +4,7 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Board implements KeyListener{
+public class Board /*implements KeyListener*/{
 	public Player player;
 	public int timer;
 	private ArrayList<NPC> obstacles;
@@ -12,13 +12,13 @@ public class Board implements KeyListener{
 	
 	public final static int frameWidth = 700;
 	public final static int frameHeight = 500;
-	
+	///*
 	public static void main(String[] args) {
 		Board board = new Board();
 		while (!board.getIsGameOver()) {
-			//Random rand = new Random();
-			//int n = rand.nextInt(300);
-			//board.modelInConsole(n);
+			Random rand = new Random();
+			int n = rand.nextInt(300);
+			board.modelInConsole(n);
 			board.update();
 			try {
 				Thread.sleep(18);
@@ -28,20 +28,21 @@ public class Board implements KeyListener{
 		}
 		System.out.println("Game over!");
 	}
-	
+	//*/
 	
 	public Board() {
 		player = new Player();
 		obstacles = new ArrayList<NPC>();
 		isGameOver = false;
-		}
+	}
+	
 	public void modelInConsole(int n) {
 		if(n==0) {
 			player.jumpDown();
 			System.out.println("Player has jumped to lane:"+player.getLane());
 		}else if(n==1) {
 			player.jumpUp();
-			System.out.println("Lane:"+player.getLane());
+			System.out.println("Player has jumped to lane:"+player.getLane());
 		}
 		
 	}
@@ -102,7 +103,7 @@ public class Board implements KeyListener{
 		return player;
 	}
 		
-
+/*
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
@@ -124,10 +125,10 @@ public class Board implements KeyListener{
 			player.jumpDown();
 		System.out.println("Moved to: " + player.getLane());
 	}
-		
-	}
+		*/
+}
 
-class GameBoard implements KeyListener{
+/*class GameBoard implements KeyListener{
 	Board board = new Board();
 
 	@Override
@@ -149,3 +150,4 @@ class GameBoard implements KeyListener{
 	}
 }
 
+*/
