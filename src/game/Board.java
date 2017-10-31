@@ -16,6 +16,9 @@ public class Board implements KeyListener{
 	public static void main(String[] args) {
 		Board board = new Board();
 		while (!board.getIsGameOver()) {
+			//Random rand = new Random();
+			//int n = rand.nextInt(300);
+			//board.modelInConsole(n);
 			board.update();
 			try {
 				Thread.sleep(18);
@@ -26,12 +29,22 @@ public class Board implements KeyListener{
 		System.out.println("Game over!");
 	}
 	
+	
 	public Board() {
 		player = new Player();
 		obstacles = new ArrayList<NPC>();
 		isGameOver = false;
 		}
-	
+	public void modelInConsole(int n) {
+		if(n==0) {
+			player.jumpDown();
+			System.out.println("Lane:"+player.getLane());
+		}else if(n==1) {
+			player.jumpUp();
+			System.out.println("Lane:"+player.getLane());
+		}
+		
+	}
 	public void removeNPC(int i) {
 		obstacles.remove(i);
 	}
@@ -88,15 +101,43 @@ public class Board implements KeyListener{
 	public Player getPlayer() {
 		return player;
 	}
+		
 
 	@Override
-	public void keyPressed(KeyEvent key) {
-		int keyCode = key.getKeyCode();
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		int keyCode = e.getKeyCode();
 		if (KeyEvent.VK_UP == keyCode)
 			player.jumpUp();
 		if (KeyEvent.VK_DOWN == keyCode)
 			player.jumpDown();
 		System.out.println("Moved to: " + player.getLane());
+	}
+		
+	}
+
+class GameBoard implements KeyListener{
+	Board board = new Board();
+
+	@Override
+	public void keyPressed(KeyEvent key) {
+		int keyCode = key.getKeyCode();
+		if (KeyEvent.VK_UP == keyCode)
+			board.player.jumpUp();
+		if (KeyEvent.VK_DOWN == keyCode)
+			board.player.jumpDown();
+		System.out.println("Moved to: " + board.player.getLane());
 	}
 
 	@Override
