@@ -1,5 +1,6 @@
 package game;
 
+
 import java.util.Random;
 
 public class NPC extends Character {
@@ -45,4 +46,6 @@ public class NPC extends Character {
 			return "This garbage has lane:" + this.lane + " It's xloc is:"+this.xloc;
 		}
 	}
+	
+	
 }

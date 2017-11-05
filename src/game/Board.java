@@ -4,15 +4,19 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Random;
 
+
+
+// HEALTH COUNTS UP IN THE VIEW BUT IT SHOULD COUNT DOWN LIKE IT DOES IN THE GAME.
+
 public class Board /*implements KeyListener*/{
 	public Player player;
 	public int timer;
 	private ArrayList<NPC> obstacles;
-	private boolean isGameOver;
+	public boolean isGameOver; // ERIC Changed from private
 	
 	public final static int frameWidth = 700;
 	public final static int frameHeight = 500;
-	///*
+	/*
 	public static void main(String[] args) {
 		Board board = new Board();
 		while (!board.getIsGameOver()) {
@@ -28,7 +32,7 @@ public class Board /*implements KeyListener*/{
 		}
 		System.out.println("Game over!");
 	}
-	//*/
+	*/
 	
 	public Board() {
 		player = new Player();
@@ -61,7 +65,7 @@ public class Board /*implements KeyListener*/{
 			if ((5-o.getLane() == player.getLane()) &&
 				(player.getXloc() < o.getXloc()) && 
 						(o.getXloc() < player.getXloc()+50))  {
-				System.out.println("Collision");
+				System.out.println("Collision type (100=food, -100 = garbage):"+o.getValue());
 				player.changeScore(o.getValue());//player hits an NPC and we adjust score
 				if (o.getValue() < 0)
 					player.takeDamage(o.getValue()/20);//take damage if it was garbage
