@@ -14,33 +14,34 @@ public class NPCTest {
 	@Test
 	public void testMoveNPC() {
 		NPC n1 = new NPC();
-		assertEquals("Get Value",600,n1.getXloc());
+		assertEquals("Get X Location before placed",600,n1.getXloc());
 		int original = n1.getXloc();
 		n1.moveNPC();
 		int right = n1.getXloc();
-		assertEquals("Get Value",right,n1.getXloc());
-		assertNotEquals("Get Value",original,n1.getXloc());
+		assertEquals("Test moving NPC",right,n1.getXloc());
+		assertNotEquals("Test to see if NPC was not moved",original,n1.getXloc());
 	}
+	
 	@Test
 	public void testGetIsGarbage() {
 		NPC n1 = new NPC();
 		n1.getIsGarbage();
 		int right = n1.getValue() * 1 ;
 		int wrong = n1.getValue()* -1;
-		assertEquals("Get Value",right,n1.getValue());
-		assertNotEquals("Get Value",wrong,n1.getValue());
-		//True or False return isGarbage;
+		assertEquals("Check to see if it is garbage or food boolean if it's wrong its opposite",right,n1.getValue());
+		assertNotEquals("Check to see if it thinks the NPC is opposite of what it is",wrong,n1.getValue());
 	}
+	
 	@Test
 	public void testGetValue() {
 		NPC n1 = new NPC();
 		int right = n1.getValue();
 		int wrong = n1.getValue() * -1;
-
 		assertEquals("Get Value",right,n1.getValue());
 		assertNotEquals("Get Value",wrong,n1.getValue());
 		assertNotEquals("Get Value",0,n1.getValue());
 	}
+	
 	@Test
 	public void testGetXloc() {
 		NPC n1 = new NPC();
@@ -57,7 +58,6 @@ public class NPCTest {
 			assertEquals("Test to string method","This garbage has lane:"+n1.getLane()+" It's xloc is:600" ,n1.toString());
 		}else
 			assertEquals("Test to string method","This food has lane:"+n1.getLane()+" It's xloc is:600" ,n1.toString());
-		
 	}
 
 }

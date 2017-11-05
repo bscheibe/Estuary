@@ -1,18 +1,14 @@
 package game;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+//import java.awt.event.KeyEvent;
+//import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Random;
-
-
-
-// HEALTH COUNTS UP IN THE VIEW BUT IT SHOULD COUNT DOWN LIKE IT DOES IN THE GAME.
 
 public class Board /*implements KeyListener*/{
 	public Player player;
 	public int timer;
-	private ArrayList<NPC> obstacles;
-	public boolean isGameOver; // ERIC Changed from private
+	public ArrayList<NPC> obstacles; //ERIC Changed from Private to Public
+	public boolean isGameOver; // ERIC Changed from private to Public
 	
 	public final static int frameWidth = 700;
 	public final static int frameHeight = 500;
@@ -40,6 +36,7 @@ public class Board /*implements KeyListener*/{
 		isGameOver = false;
 	}
 	
+	//JUNIT
 	public void modelInConsole(int n) {
 		if(n==0) {
 			player.jumpDown();
@@ -50,10 +47,13 @@ public class Board /*implements KeyListener*/{
 		}
 		
 	}
+	
+	//JUNIT
 	public void removeNPC(int i) {
 		obstacles.remove(i);
 	}
 	
+	//JUNIT
 	public void moveNPCs() {
 		ArrayList<NPC> removes = new ArrayList<NPC>();
 		for (NPC o : obstacles) {
@@ -95,14 +95,17 @@ public class Board /*implements KeyListener*/{
 		}
 	}
 	
+	//JUNIT
 	public boolean getIsGameOver() {
 		return isGameOver;
 	}
 
+	//JUNIT
 	public ArrayList<NPC> getObstacles() {
 		return obstacles;
 	}
 
+	//JUNIT
 	public Player getPlayer() {
 		return player;
 	}
