@@ -36,8 +36,15 @@ public class BoardTest {
 		ArrayList<String> a1 = new ArrayList<String>(); // empty arraylist
 		b1.getObstacles();
 		//System.out.println(b1.getObstacles());
-		
 		assertEquals("No obstacles have been created yet",a1,b1.getObstacles());
+		NPC n = new NPC();
+		NPC n2 = new NPC();
+		n.setXloc(1);
+		n2.setXloc(1);
+
+		b1.obstacles.add(n);
+		b1.obstacles.add(n2);
+		assertEquals("Obstacles have been removed",2,b1.getObstacles().size());
 
 	}
 	@Test
