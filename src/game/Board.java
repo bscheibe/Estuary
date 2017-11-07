@@ -1,24 +1,24 @@
 package game;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+//import java.awt.event.KeyEvent;
+//import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Board implements KeyListener{
+public class Board /*implements KeyListener*/{
 	public Player player;
 	public int timer;
-	private ArrayList<NPC> obstacles;
-	private boolean isGameOver;
+	public ArrayList<NPC> obstacles; //ERIC Changed from Private to Public
+	public boolean isGameOver; // ERIC Changed from private to Public
 	
 	public final static int frameWidth = 700;
 	public final static int frameHeight = 500;
-	
+	/*
 	public static void main(String[] args) {
 		Board board = new Board();
 		while (!board.getIsGameOver()) {
-			//Random rand = new Random();
-			//int n = rand.nextInt(300);
-			//board.modelInConsole(n);
+			Random rand = new Random();
+			int n = rand.nextInt(300);
+			board.modelInConsole(n);
 			board.update();
 			try {
 				Thread.sleep(18);
@@ -28,27 +28,32 @@ public class Board implements KeyListener{
 		}
 		System.out.println("Game over!");
 	}
-	
+	*/
 	
 	public Board() {
 		player = new Player();
 		obstacles = new ArrayList<NPC>();
 		isGameOver = false;
-		}
+	}
+	
+	//JUNIT
 	public void modelInConsole(int n) {
 		if(n==0) {
 			player.jumpDown();
 			System.out.println("Player has jumped to lane:"+player.getLane());
 		}else if(n==1) {
 			player.jumpUp();
-			System.out.println("Lane:"+player.getLane());
+			System.out.println("Player has jumped to lane:"+player.getLane());
 		}
 		
 	}
+	
+	//JUNIT
 	public void removeNPC(int i) {
 		obstacles.remove(i);
 	}
 	
+	//JUNIT
 	public void moveNPCs() {
 		ArrayList<NPC> removes = new ArrayList<NPC>();
 		for (NPC o : obstacles) {
@@ -60,7 +65,7 @@ public class Board implements KeyListener{
 			if ((5-o.getLane() == player.getLane()) &&
 				(player.getXloc() < o.getXloc()) && 
 						(o.getXloc() < player.getXloc()+50))  {
-				System.out.println("Collision");
+				System.out.println("Collision type (100=food, -100 = garbage):"+o.getValue());
 				player.changeScore(o.getValue());//player hits an NPC and we adjust score
 				if (o.getValue() < 0)
 					player.takeDamage(o.getValue()/20);//take damage if it was garbage
@@ -90,19 +95,22 @@ public class Board implements KeyListener{
 		}
 	}
 	
+	//JUNIT
 	public boolean getIsGameOver() {
 		return isGameOver;
 	}
 
+	//JUNIT
 	public ArrayList<NPC> getObstacles() {
 		return obstacles;
 	}
 
+	//JUNIT
 	public Player getPlayer() {
 		return player;
 	}
 		
-
+/*
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
@@ -124,10 +132,10 @@ public class Board implements KeyListener{
 			player.jumpDown();
 		System.out.println("Moved to: " + player.getLane());
 	}
-		
-	}
+		*/
+}
 
-class GameBoard implements KeyListener{
+/*class GameBoard implements KeyListener{
 	Board board = new Board();
 
 	@Override
@@ -149,3 +157,4 @@ class GameBoard implements KeyListener{
 	}
 }
 
+*/
