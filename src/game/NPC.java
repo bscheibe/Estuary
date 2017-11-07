@@ -1,5 +1,6 @@
 package game;
 
+
 import java.util.Random;
 
 public class NPC extends Character {
@@ -22,19 +23,34 @@ public class NPC extends Character {
 		xloc = 600;
 	}
 	
+	//JUNIT
 	public void moveNPC() {
 		xloc -= speed;
 	}
 	
+	//JUNIT
 	public boolean getIsGarbage() {
 		return isGarbage;
 	}
 
+	//JUNIT
 	public int getValue() {
 		return value;
 	}
 	
+	//JUNIT
 	public int getXloc() {
 		return xloc;
 	}
+	
+	//JUNIT
+	public String toString() {
+		if(this.value == 100) {
+			return "This food has lane:" + this.lane+ " It's xloc is:"+this.xloc;
+		}else {
+			return "This garbage has lane:" + this.lane + " It's xloc is:"+this.xloc;
+		}
+	}
+	
+	
 }

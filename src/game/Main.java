@@ -12,6 +12,10 @@ public class Main {
 		while (!board.getIsGameOver()) {
 			controller.tick();
 			controller.updateView();
+			/*System.out.println(board.player);
+			for (NPC n : board.getObstacles()) {
+				System.out.println(n);
+			}*/
 			try {
 				Thread.sleep(18);
 			} catch (InterruptedException e) {
