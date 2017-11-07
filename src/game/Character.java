@@ -1,7 +1,7 @@
 package game;
 
 /**
- * @author ericallen
+ * @author ericallen 
  *
  */
 public class Character {
@@ -9,7 +9,7 @@ public class Character {
 	int yloc;
 	int lane;
 	/**
-	 * Character constructor
+	 * Character constructor.
 	 */
 	public Character(){	
 	}
