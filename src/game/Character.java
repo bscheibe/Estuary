@@ -1,7 +1,7 @@
 package game;
 
 /**
- * @author ericallen   
+ * @author ericallen     
  *
  */
 public class Character {
