@@ -14,6 +14,7 @@ public class Controller {
 	 * initiates the controller.
 	 * @param board
 	 * @param view
+	 * @return Board
 	 */
 	public Controller(Board board, View view) {
 		this.board = board;
@@ -21,11 +22,13 @@ public class Controller {
 	}
 	/**
 	 * Calls the update() method in board.
+	 * @return void
 	 */
 	public void tick() {
 		board.update();
 	}
 	/**
+	 * @return void
 	 * Passes the list of obstacles, and player
 	 * locations to the view, then tells the view
 	 * to repaint.
