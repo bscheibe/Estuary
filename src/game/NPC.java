@@ -23,9 +23,9 @@ public class NPC extends Character {
 	 * sets yloc dependant on the lane
 	 * sets xloc to 600
 	 */
-	public NPC() {
-		image = imagetype[(int) (Math.random()*5)];
+	public NPC() {;
 		Random random = new Random();
+		image = random.nextInt(2);
 		isGarbage = random.nextBoolean();
 		speed = 2 + random.nextInt(2);
 		value = 100;

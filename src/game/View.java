@@ -5,8 +5,12 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -21,7 +25,11 @@ public class View extends JFrame{
 	private GamePanel panel;
 	private ArrayList<NPC> obstacles;
 	private Player player;
-	public static BufferedImage testImage;
+	public static BufferedImage FishPlayerImage;
+	public static BufferedImage[] TrashNPCImages;
+	public static BufferedImage TrashNPCImage2;
+	public static BufferedImage FoodNPCImage;
+	public static BufferedImage Background;
 	
 	/**
 	 * @param width
@@ -30,11 +38,17 @@ public class View extends JFrame{
 	 * @param player
 	 */
 	public View(int width, int height, ArrayList<NPC> obstacles, Player player){
-//		try {
-//			testImage = ImageIO.read(new File("resources/think.png"));
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
+		try {
+			FishPlayerImage = ImageIO.read(new File("images/Fish_East_1.png"));
+			TrashNPCImages = new BufferedImage[2];
+			TrashNPCImages[0] = ImageIO.read(new File("images/trash.png"));
+			TrashNPCImages[1] = ImageIO.read(new File("images/car-tire-png-479.png"));
+			FoodNPCImage = ImageIO.read(new File("images/Fish_dead_east.png"));
+			Background = ImageIO.read(new File("images/background.PNG"));
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		this.setObstacles(obstacles);
 	    panel = new GamePanel();
 	    panel.obstacles = obstacles;
@@ -152,17 +166,15 @@ class GamePanel extends JPanel implements KeyListener{
 
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
+		g.drawImage(View.Background, 0, 0, Main.frameWidth, Main.frameHeight, this);
 		for (game.NPC o : obstacles){
 			if (o.getIsGarbage()) {
-				g.setColor(Color.green);
-				g.drawRect(o.getXloc(), o.getYloc(), 50, 50);
+				g.drawImage(View.TrashNPCImages[o.image], o.getXloc(), o.getYloc(), 50, 50, null);
 			} else {
-				g.setColor(Color.blue);
-				g.drawRect(o.getXloc(), o.getYloc(), 50, 50);
+				g.drawImage(View.FoodNPCImage, o.getXloc(), o.getYloc(), 50, 50, null);
 			}
 		}
-		g.setColor(Color.red);
-		g.drawRect(player.getXloc(), player.getYloc(), 50, 50);
+		g.drawImage(View.FishPlayerImage, player.getXloc()-player.score/200, player.getYloc()-player.score/200, 50+player.score/100, 50+player.score/100, this);
 		g.setColor(Color.BLACK);
 		g.drawString("" + player.getScore(), 50, 50);
 		g.drawString("" + player.getHealth(), 50, 70);
