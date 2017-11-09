@@ -41,10 +41,10 @@ public class Board /*implements KeyListener*/{
 	public void modelInConsole(int n) {
 		if(n==0) {
 			player.jumpDown();
-			System.out.println("Player has jumped to lane:"+player.getLane());
+			System.out.println("Player has jumped to lane "+player.getLane());
 		}else if(n==1) {
 			player.jumpUp();
-			System.out.println("Player has jumped to lane:"+player.getLane());
+			System.out.println("Player has jumped to lane "+player.getLane());
 		}
 		
 	}
@@ -66,7 +66,7 @@ public class Board /*implements KeyListener*/{
 			if ((5-o.getLane() == player.getLane()) &&
 				(player.getXloc() < o.getXloc()) && 
 						(o.getXloc() < player.getXloc()+50))  {
-				System.out.println("Collision type (100=food, -100 = garbage):"+o.getValue());
+				System.out.println("Collision value:" + o.getValue() + " (+100 means food, -100 means garbage).");
 				player.changeScore(o.getValue());//player hits an NPC and we adjust score
 				if (o.getValue() < 0)
 					player.takeDamage(o.getValue()/20);//take damage if it was garbage

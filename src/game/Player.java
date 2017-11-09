@@ -96,6 +96,6 @@ public class Player extends Character {
 	 */
 	public String toString() {
 		//return "This player has lane:" + this.lane + " Their score is:" + this.score;
-		return "This player has lane:" + this.lane + " Their score is:" + this.score + " Player Health:"+this.health;
+		return "This player is in lane " + this.lane + ", their score is " + this.score + ", and they have " + this.health + " hit points.";
 	}
 }
