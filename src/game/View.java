@@ -40,13 +40,13 @@ public class View extends JFrame{
 	 */
 	public View(int width, int height, ArrayList<NPC> obstacles, Player player){
 		try {
-			FishPlayerImage = ImageIO.read(new File("images/Fish_East_1.png"));
+			FishPlayerImage = ImageIO.read(new File("Resources/images/Fish_East_1.png"));
 			TrashNPCImages = new BufferedImage[2];
-			TrashNPCImages[0] = ImageIO.read(new File("images/trash.png"));
-			TrashNPCImages[1] = ImageIO.read(new File("images/car-tire-png-479.png"));
-			FoodNPCImage = ImageIO.read(new File("images/Fish_dead_east.png"));
-			Background = ImageIO.read(new File("images/background.PNG"));
-			BackgroundFlip = ImageIO.read(new File("images/backgroundflip.png"));
+			TrashNPCImages[0] = ImageIO.read(new File("Resources/images/trash.png"));
+			TrashNPCImages[1] = ImageIO.read(new File("Resources/images/car-tire-png-479.png"));
+			FoodNPCImage = ImageIO.read(new File("Resources/images/Fish_dead_east.png"));
+			Background = ImageIO.read(new File("Resources/images/background.PNG"));
+			BackgroundFlip = ImageIO.read(new File("Resources/images/backgroundflip.png"));
 
 		} catch (IOException e) {
 			e.printStackTrace();
