@@ -30,6 +30,7 @@ public class View extends JFrame{
 	public static BufferedImage TrashNPCImage2;
 	public static BufferedImage FoodNPCImage;
 	public static BufferedImage Background;
+	public static BufferedImage BackgroundFlip;
 	
 	/**
 	 * @param width
@@ -45,6 +46,7 @@ public class View extends JFrame{
 			TrashNPCImages[1] = ImageIO.read(new File("images/car-tire-png-479.png"));
 			FoodNPCImage = ImageIO.read(new File("images/Fish_dead_east.png"));
 			Background = ImageIO.read(new File("images/background.PNG"));
+			BackgroundFlip = ImageIO.read(new File("images/backgroundflip.png"));
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -166,7 +168,8 @@ class GamePanel extends JPanel implements KeyListener{
 
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-		g.drawImage(View.Background, 0, 0, Main.frameWidth, Main.frameHeight, this);
+		g.drawImage(View.Background, -Board.timer%Main.frameWidth, 0, Main.frameWidth, Main.frameHeight, this);
+		g.drawImage(View.BackgroundFlip, Main.frameWidth-Board.timer%Main.frameWidth, 0, Main.frameWidth, Main.frameHeight, this);
 		for (game.NPC o : obstacles){
 			if (o.getIsGarbage()) {
 				g.drawImage(View.TrashNPCImages[o.image], o.getXloc(), o.getYloc(), 50, 50, null);

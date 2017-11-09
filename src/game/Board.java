@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Board /*implements KeyListener*/{
 	public Player player;
-	public int timer;
+	public static int timer;
 	public ArrayList<NPC> obstacles; //ERIC Changed from Private to Public
 	public boolean isGameOver; // ERIC Changed from private to Public
 	
@@ -31,6 +31,7 @@ public class Board /*implements KeyListener*/{
 	*/
 	
 	public Board() {
+		timer=0;
 		player = new Player();
 		obstacles = new ArrayList<NPC>();
 		isGameOver = false;
@@ -77,6 +78,7 @@ public class Board /*implements KeyListener*/{
 	}
 
 	public void update() {
+		timer++;
 		Random rand = new Random();
 		boolean isThereSpace = true;
 		moveNPCs();
