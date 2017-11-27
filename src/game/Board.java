@@ -4,6 +4,8 @@ package game;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.swing.JOptionPane;
+
 public class Board /*implements KeyListener*/{
 	public Player player;
 	public static int timer;
@@ -66,6 +68,14 @@ public class Board /*implements KeyListener*/{
 			if ((5-o.getLane() == player.getLane()) &&
 				(player.getXloc() < o.getXloc()) && 
 						(o.getXloc() < player.getXloc()+50))  {
+				if (View.FoodNPCImages[o.image] == View.PowerUpNPCImage) {
+					String[] questionAndAnswer = PowerUp.getQuestionAndAnswer();
+					
+					String answer = JOptionPane.showInputDialog(null, questionAndAnswer[0], "Power Up Question!", JOptionPane.QUESTION_MESSAGE);
+					if (answer.equals(questionAndAnswer[1])) {
+						player.changeScore(o.getValue());
+					}
+				}
 				System.out.println("Collision value:" + o.getValue() + " (+100 means food, -100 means garbage).");
 				player.changeScore(o.getValue());//player hits an NPC and we adjust score
 				if (o.getValue() < 0)

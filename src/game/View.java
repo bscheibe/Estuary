@@ -26,7 +26,10 @@ public class View extends JFrame{
 	private ArrayList<NPC> obstacles;
 	private Player player;
 	public static BufferedImage FishPlayerImage;
+	public static BufferedImage FishNPCImage;
+	public static BufferedImage PowerUpNPCImage;
 	public static BufferedImage[] TrashNPCImages;
+	public static BufferedImage[] FoodNPCImages;
 	public static BufferedImage TrashNPCImage2;
 	public static BufferedImage FoodNPCImage;
 	public static BufferedImage Background;
@@ -44,7 +47,11 @@ public class View extends JFrame{
 			TrashNPCImages = new BufferedImage[2];
 			TrashNPCImages[0] = ImageIO.read(new File("Resources/images/trash.png"));
 			TrashNPCImages[1] = ImageIO.read(new File("Resources/images/car-tire-png-479.png"));
-			FoodNPCImage = ImageIO.read(new File("Resources/images/Fish_dead_east.png"));
+			FoodNPCImages = new BufferedImage[2];
+			PowerUpNPCImage = ImageIO.read(new File("Resources/images/Dirt.png"));
+			FishNPCImage = ImageIO.read(new File("Resources/images/Fish_dead_east.png"));
+			FoodNPCImages[0] = FishNPCImage;
+			FoodNPCImages[1] = PowerUpNPCImage;
 			Background = ImageIO.read(new File("Resources/images/background.PNG"));
 			BackgroundFlip = ImageIO.read(new File("Resources/images/backgroundflip.png"));
 
@@ -174,7 +181,7 @@ class GamePanel extends JPanel implements KeyListener{
 			if (o.getIsGarbage()) {
 				g.drawImage(View.TrashNPCImages[o.image], o.getXloc(), o.getYloc(), 50, 50, null);
 			} else {
-				g.drawImage(View.FoodNPCImage, o.getXloc(), o.getYloc(), 50, 50, null);
+				g.drawImage(View.FoodNPCImages[o.image], o.getXloc(), o.getYloc(), 50, 50, null);
 			}
 		}
 		g.drawImage(View.FishPlayerImage, player.getXloc()-player.score/200, player.getYloc()-player.score/200, 50+player.score/100, 50+player.score/100, this);
