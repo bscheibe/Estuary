@@ -41,10 +41,10 @@ public class Board /*implements KeyListener*/{
 	public void modelInConsole(int n) {
 		if(n==0) {
 			player.jumpDown();
-			System.out.println("Player has jumped to lane "+player.getLane());
+			System.out.println("Player is moving with a velocity of "+player.getVerticalVelocity());
 		}else if(n==1) {
 			player.jumpUp();
-			System.out.println("Player has jumped to lane "+player.getLane());
+			System.out.println("Player is moving with a velocity of "+player.getVerticalVelocity());
 		}
 		
 	}
@@ -63,7 +63,8 @@ public class Board /*implements KeyListener*/{
 				removes.add(o);
 				continue;
 			}
-			if ((5-o.getLane() == player.getLane()) &&
+			if ((o.getYloc() < player.getYloc()+50) &&
+					(o.getYloc() > player.getYloc()-50) &&
 				(player.getXloc() < o.getXloc()) && 
 						(o.getXloc() < player.getXloc()+50))  {
 				System.out.println("Collision value:" + o.getValue() + " (+100 means food, -100 means garbage).");
@@ -79,6 +80,7 @@ public class Board /*implements KeyListener*/{
 
 	public void update() {
 		timer++;
+		player.updateMovement();
 		Random rand = new Random();
 		boolean isThereSpace = true;
 		moveNPCs();

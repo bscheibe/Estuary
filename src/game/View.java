@@ -8,8 +8,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Random;
-
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -200,10 +198,10 @@ class GamePanel extends JPanel implements KeyListener{
 	public void keyPressed(KeyEvent key) {
 		int keyCode = key.getKeyCode();
 		if (KeyEvent.VK_UP == keyCode)
-			player.jumpUp();
+			player.accelUp();
 		if (KeyEvent.VK_DOWN == keyCode)
-			player.jumpDown();
-		System.out.println("Player has jumped to lane "+player.getLane() + ".");
+			player.accelDown();
+		System.out.println("Player is moving with a velocity of "+player.getVerticalVelocity());
 		repaint();
 	}
 
@@ -212,7 +210,13 @@ class GamePanel extends JPanel implements KeyListener{
 	 * Handle the key-released event from the text field.
 	 */
 	public void keyReleased(KeyEvent e) {
-		return;
+		int keyCode = e.getKeyCode();
+		if (KeyEvent.VK_UP == keyCode)
+			player.stop();
+		if (KeyEvent.VK_DOWN == keyCode)
+			player.stop();
+		System.out.println("Player has stopped moving");
+		repaint();
 	}
 
 

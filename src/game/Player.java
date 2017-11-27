@@ -7,6 +7,8 @@ public class Player extends Character {
 	int score = 0;
 	int health = 10;
 	int food = 0;
+	int verticalVelocity;
+	boolean isAccel;
 	
 	//JUNIT
 	/**
@@ -16,6 +18,21 @@ public class Player extends Character {
 		xloc = Main.frameWidth - 650;
 		yloc = 2 * (Main.frameHeight / 5);
 		lane = 3;
+	}
+	public void updateMovement() {//moves the character and updates velocity if a key is still held
+		if (!isAccel) {
+			if (verticalVelocity > 0) {
+				verticalVelocity -= 1;
+				return;
+			}
+			if (verticalVelocity < 0) {
+				verticalVelocity += 1;
+				return;
+			}
+		}
+		if (isAccel)
+			accel();
+		yloc += verticalVelocity;
 	}
 	//JUNIT
 	/**
@@ -30,6 +47,23 @@ public class Player extends Character {
 	 */
 	public void eatFood() {
 		this.food++;
+	}
+	public void accelUp() {
+		verticalVelocity = -5;
+		isAccel = true;
+	}
+	public void accelDown() {
+		verticalVelocity = 5;
+		isAccel = true;
+	}
+	public void accel() {
+		if (verticalVelocity < 6)
+				verticalVelocity += 2;
+		if (verticalVelocity > -6)
+				verticalVelocity += -2;
+	}
+	public void stop() {
+		isAccel = false;
 	}
 	//JUNIT
 	/**
@@ -96,6 +130,9 @@ public class Player extends Character {
 	 */
 	public String toString() {
 		//return "This player has lane:" + this.lane + " Their score is:" + this.score;
-		return "This player is in lane " + this.lane + ", their score is " + this.score + ", and they have " + this.health + " hit points.";
+		return "This player at location " + this.yloc + ", their score is " + this.score + ", and they have " + this.health + " hit points.";
+	}
+	public int getVerticalVelocity() {
+		return verticalVelocity;
 	}
 }
